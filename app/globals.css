@@ -1,12 +1,16 @@
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #F0E8D8;
+  --blue: #4975A6;
+  --yellow: #E5B55B;
+  --red: #E1674C;
+  --charcoal: #2D2D31;
+  --foreground: #2D2D31;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #F0E8D8;
+    --foreground: #2D2D31;
   }
 }
 
@@ -22,6 +26,24 @@ body {
   font-family: Arial, Helvetica, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-family: var(--font-hv-analogue-regular);  
+}
+
+h1 {
+  font-size: 64px;
+}
+h2 {
+  font-size: 36px;
+}
+h3 {
+  font-size: 48px;
 }
 
 * {
