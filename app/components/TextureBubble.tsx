@@ -18,9 +18,11 @@ const TextureBubble = () => {
       ref.current.style.setProperty('top', `${event.pageY - 150}px`)
     }, 100)
     document.documentElement.addEventListener('mousemove', onMove)
+    document.addEventListener('scroll', onMove)
 
     return () => {
       document.documentElement.removeEventListener('mousemove', onMove)
+      document.removeEventListener('scroll', onMove)
     }
   }, [])
 
@@ -28,6 +30,13 @@ const TextureBubble = () => {
     <>
       <div className="texture" ref={ref} />
       <svg viewBox="0 0 300 300">
+        <defs>
+          <radialGradient id="texture-gradient">
+            <stop offset="0%" stopColor="white"></stop>
+            <stop offset="60%" stopColor="#DDD"></stop>
+            <stop offset="100%" stopColor="black"></stop>
+          </radialGradient>
+        </defs>
         <mask id="texture-mask">
           <circle
             cx="150"
@@ -36,12 +45,6 @@ const TextureBubble = () => {
             fill="url(#texture-gradient)"
           ></circle>
         </mask>
-        <defs>
-          <radialGradient id="texture-gradient">
-            <stop offset="0%" stopColor="black"></stop>
-            <stop offset="100%" stopColor="white"></stop>
-          </radialGradient>
-        </defs>
       </svg>
       <style jsx>
         {`
@@ -57,7 +60,6 @@ const TextureBubble = () => {
               background-position 0.1s linear;
 
             mask-image: url(#texture-mask);
-            mask-mode: alpha;
             mask-size: cover;
           }
 
